@@ -1,0 +1,21 @@
+package com.kd.yazpaints.controllers;
+
+import com.kd.yazpaints.services.SimpleService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class SimpleRestController {
+
+    private final SimpleService simpleService;
+
+    public SimpleRestController(SimpleService simpleService) {
+        this.simpleService = simpleService;
+    }
+
+    @PostMapping("/invoice/generate")
+    public String generateInvoice() {
+        return ResponseEntity.ok(simpleService.generateInvoice());
+    }
+}
