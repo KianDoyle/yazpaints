@@ -31,7 +31,7 @@ public class FilterData implements java.io.Serializable {
     private FilterDataId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "filter_id", nullable = false)
+    @JoinColumn(name = "filter_id", insertable = false, updatable = false, nullable = false)
     private Filter filter;
 
     @Column(name = "value", nullable = false)

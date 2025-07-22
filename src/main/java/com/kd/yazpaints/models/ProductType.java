@@ -49,4 +49,8 @@ public class ProductType implements java.io.Serializable {
         this.products = products;
     }
 
+    public boolean equals(String type) {
+        return this.name.equals(type);
+    }
+
 }

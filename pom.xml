@@ -38,11 +38,11 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>jakarta.persistence</groupId>
 			<artifactId>jakarta.persistence-api</artifactId>
 			<version>3.2.0</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -56,21 +56,15 @@
 			<version>3.5.3</version>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.2-api</artifactId>
-			<version>1.0.2.Final</version>
-		</dependency> -->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -102,24 +96,12 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate.orm</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>6.6.18.Final</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate.tool</groupId>
-			<artifactId>hibernate-tools-maven</artifactId>
-			<version>6.6.17.Final</version>
-		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -143,44 +125,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin> -->
-
-			<plugin>
-				<groupId>org.hibernate.tool</groupId>
-				<artifactId>hibernate-tools-maven</artifactId>
-				<version>6.6.17.Final</version>
-				<executions>
-					<execution>
-						<id>generate-entities</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>hbm2java</goal>
-						</goals>
-						<configuration>
-							<hibernateConfig>src/main/resources/hibernate.cfg.xml</hibernateConfig>
-							<revengFile>src/main/resources/hibernate.reveng.xml</revengFile>
-							<outputDirectory>src/main/java</outputDirectory>
-							<packageName>com.kd.yazpaints.entities</packageName>
-							<ejb3>true</ejb3>
-							<jdk5>true</jdk5>
-							<detectManyToMany>true</detectManyToMany>
-							<detectOneToOne>true</detectOneToOne>
-							<detectOptimisticLock>true</detectOptimisticLock>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.postgresql</groupId>
-						<artifactId>postgresql</artifactId>
-						<version>42.6.0</version>
-					</dependency>
-					<dependency>
-						<groupId>org.hibernate.orm</groupId>
-						<artifactId>hibernate-core</artifactId>
-						<version>6.6.18.Final</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 		</plugins>

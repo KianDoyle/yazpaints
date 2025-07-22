@@ -24,12 +24,16 @@ public class Review implements java.io.Serializable {
     @Id
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
+
     @Column(name = "rating", nullable = false)
     private Integer rating;
+    
     @Column(name = "comment")
     private String comment;
+    
     @Column(name = "reviewer_name")
     private String reviewerName;
+    
     @Column(name = "created_at", length = 29)
     private LocalDateTime createdAt;
 
