@@ -24,11 +24,11 @@ public class ProductTag implements java.io.Serializable {
             @AttributeOverride(name = "tagId", column = @Column(name = "tag_id", nullable = false)) })
     private ProductTagId id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", insertable = false, updatable = false, nullable = false)
     private Product productId;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tag_id", insertable = false, updatable = false, nullable = false)
     private Tag tagId;
 

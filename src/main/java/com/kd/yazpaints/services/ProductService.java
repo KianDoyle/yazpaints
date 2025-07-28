@@ -19,8 +19,12 @@ import com.kd.yazpaints.models.File;
 import com.kd.yazpaints.models.Review;
 import com.kd.yazpaints.models.Tag;
 
+import java.text.ListFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ProductService {
@@ -73,14 +77,39 @@ public class ProductService {
     }
     
     public List<Product> getProductsByType(String type) {
-        List<ProductType> validTypes = productTypeRepository.findAll();
+        Optional<ProductType> validType = productTypeRepository.findByName(type);
         
-        ProductType productType = validTypes.stream()
-            .filter(pt -> pt.equals(type))
-            .findFirst()
-            .orElseThrow(() -> new IllegalArgumentException("Product type not found: " + type));
+        if (validType.isEmpty()) {
+            throw new IllegalArgumentException("Invalid product type: " + type);
+        } 
+        
+        return productRepository.findAllByProductType(validType.get());
+    }
 
-        return productRepository.findAllByProductType(productType);
+    public List<Product> getProductsByTag(String tag) {
+        Optional<Tag> validTag = tagRepository.findByName(tag);
+
+        if (validTag.isEmpty()) {
+            throw new IllegalArgumentException("Invalid tag: " + tag);
+        }
+
+        List<ProductTag> productTags = productTagRepository.findAllByTagId(validTag.get());
+
+        return productTags.stream().map(pt -> pt.getProductId()).toList();
+    }
+
+    public CompleteProduct getProductById(Integer id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Could not find product with ID: " + id));
+
+        List<ProductImage> productImages = productImageRepository.findAllByProductId(product);
+        List<ProductReview> productReviews = productReviewRepository.findAllByProductId(product);
+        List<ProductTag> productTags = productTagRepository.findAllByProductId(product);
+        
+        List<File> images = productImages.stream().map(pi -> pi.getFileId()).toList();
+        List<Review> reviews = productReviews.stream().map(pr -> pr.getReviewId()).toList();
+        List<Tag> tags = productTags.stream().map(pi -> pi.getTagId()).toList();
+
+        return new CompleteProduct(product, images, reviews, tags);
     } 
 
 }

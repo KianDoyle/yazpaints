@@ -6,6 +6,8 @@ package com.kd.yazpaints.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,7 +34,8 @@ public class ProductType implements java.io.Serializable {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productType")
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "productType")
     private Set<Product> products = new HashSet<Product>(0);
 
     public ProductType() {
