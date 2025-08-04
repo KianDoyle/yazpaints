@@ -6,14 +6,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
+		<version>3.5.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kd</groupId>
-	<artifactId>yazpaints</artifactId>
+	<artifactId>elysian</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>yazpaints</name>
-	<description>YazPaints Backend</description>
+	<name>elysian</name>
+	<description>Elysian Services System</description>
 	<url />
 	<licenses>
 		<license />
@@ -47,13 +47,11 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>3.5.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>3.5.3</version>
 		</dependency>
 
 		<dependency>
@@ -94,6 +92,12 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.8.6</version>
 		</dependency>
 
 	</dependencies>
