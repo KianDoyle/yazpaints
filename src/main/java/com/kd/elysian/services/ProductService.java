@@ -11,13 +11,11 @@ import com.kd.elysian.models.ProductTag;
 import com.kd.elysian.models.ProductType;
 import com.kd.elysian.models.Review;
 import com.kd.elysian.models.Tag;
-import com.kd.elysian.repositories.FileRepository;
 import com.kd.elysian.repositories.ProductImageRepository;
 import com.kd.elysian.repositories.ProductRepository;
 import com.kd.elysian.repositories.ProductReviewRepository;
 import com.kd.elysian.repositories.ProductTagRepository;
 import com.kd.elysian.repositories.ProductTypeRepository;
-import com.kd.elysian.repositories.ReviewRepository;
 import com.kd.elysian.repositories.TagRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +26,6 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductTypeRepository productTypeRepository;
-    private final FileRepository fileRepository;
-    private final ReviewRepository reviewRepository;
     private final TagRepository tagRepository;
     private final ProductImageRepository productImageRepository;
     private final ProductReviewRepository productReviewRepository;
@@ -37,16 +33,12 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository, 
                           ProductTypeRepository productTypeRepository,
-                          FileRepository fileRepository,
-                          ReviewRepository reviewRepository,
                           TagRepository tagRepository,
                           ProductImageRepository productImageRepository,
                           ProductReviewRepository productReviewRepository,
                           ProductTagRepository productTagRepository) {
         this.productRepository = productRepository;
         this.productTypeRepository = productTypeRepository;
-        this.fileRepository = fileRepository;
-        this.reviewRepository = reviewRepository;
         this.tagRepository = tagRepository;
         this.productImageRepository = productImageRepository;
         this.productReviewRepository = productReviewRepository;

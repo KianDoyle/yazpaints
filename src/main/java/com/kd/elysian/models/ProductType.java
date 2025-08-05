@@ -3,16 +3,16 @@ package com.kd.elysian.models;
 
 // Generated 21 Jul 2025, 14:17:58 by Hibernate Tools 6.6.17.Final
 
-import java.util.HashSet;
-import java.util.Set;
+// import java.util.HashSet;
+// import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+// import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+// import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+// import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
@@ -34,9 +34,9 @@ public class ProductType implements java.io.Serializable {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @JsonBackReference
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "productType")
-    private Set<Product> products = new HashSet<Product>(0);
+    // @JsonBackReference
+    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "productType")
+    // private Set<Product> products = new HashSet<Product>(0);
 
     public ProductType() {
     }
@@ -46,11 +46,11 @@ public class ProductType implements java.io.Serializable {
         this.name = name;
     }
 
-    public ProductType(Integer id, String name, Set<Product> products) {
-        this.id = id;
-        this.name = name;
-        this.products = products;
-    }
+    // public ProductType(Integer id, String name, Set<Product> products) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.products = products;
+    // }
 
     public boolean equals(String type) {
         return this.name.equals(type);
