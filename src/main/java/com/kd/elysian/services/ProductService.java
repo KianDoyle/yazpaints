@@ -1,5 +1,9 @@
 package com.kd.elysian.services;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.kd.elysian.entities.CompleteProduct;
@@ -17,9 +21,6 @@ import com.kd.elysian.repositories.ProductReviewRepository;
 import com.kd.elysian.repositories.ProductTagRepository;
 import com.kd.elysian.repositories.ProductTypeRepository;
 import com.kd.elysian.repositories.TagRepository;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -60,7 +61,7 @@ public class ProductService {
             List<Tag> tags = productTags.stream().filter(pt -> pt.getProductId().equals(product)).map(pt -> pt.getTagId()).toList();
             
             completeProducts.add(new CompleteProduct(product, files, reviews, tags));
-        };
+        }
 
         return completeProducts;
     }
@@ -115,6 +116,10 @@ public class ProductService {
         return productTypeRepository.findAll();
     }
 
+    public ProductType getProductTypeById(Integer id) {
+        return productTypeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product type with ID " + id + " does not exist."));
+    }
+    
     public ProductType addProductType(ProductType productType) {
         return productTypeRepository.save(productType);
     }
